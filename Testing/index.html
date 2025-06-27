@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Expenses Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Family Expenses Tracker</h1>
+        <div class="member-section">
+            <h2>Family Members</h2>
+            <input type="text" id="memberName" placeholder="Enter member name">
+            <button onclick="addMember()">Add Member</button>
+            <ul id="memberList"></ul>
+        </div>
+        <div class="expense-section">
+            <h2>Add Expense</h2>
+            <select id="expenseMember"></select>
+            <input type="number" id="expenseAmount" placeholder="Amount (INR)">
+            <input type="text" id="expenseDesc" placeholder="Description">
+            <button onclick="addExpense()">Add Expense</button>
+        </div>
+        <div class="expenses-table-section">
+            <h2>All Expenses</h2>
+            <table id="expensesTable">
+                <thead>
+                    <tr>
+                        <th>Member</th>
+                        <th>Amount (INR)</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="metrics-section">
+            <h2>Metrics</h2>
+            <div id="metrics"></div>
+        </div>
+        <div class="chart-section">
+            <h2>Expenses Chart</h2>
+            <canvas id="expensesChart"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Show a message for localhost instructions
+        window.onload = function() {
+            if (!window.location.href.startsWith('http://localhost:')) {
+                const msg = document.createElement('div');
+                msg.style.background = '#fffae6';
+                msg.style.border = '1px solid #ffe58f';
+                msg.style.padding = '10px';
+                msg.style.margin = '20px 0';
+                msg.style.textAlign = 'center';
+                msg.innerHTML = 'Tip: For best experience, run a local server and access this app at <b>http://localhost:5500/</b> (see instructions below).';
+                document.body.insertBefore(msg, document.body.firstChild);
+            }
+        }
+    </script>
+    <div class="instructions" style="max-width:800px;margin:30px auto 0 auto;padding:15px;background:#f0f8ff;border-radius:8px;">
+        <h3>How to run locally:</h3>
+        <ol>
+            <li>Open a terminal in this folder (<code>c:\Devsecops\Sourcecode\subrataa</code>).</li>
+            <li>If you have Python installed, run: <br><code>python -m http.server 5500</code></li>
+            <li>Then open <a href="http://localhost:5500/" target="_blank">http://localhost:5500/</a> in your browser.</li>
+            <li>Or use VS Code's Live Server extension for instant reloads.</li>
+        </ol>
+    </div>
+</body>
+</html>
